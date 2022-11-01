@@ -4,9 +4,6 @@ import {
     Divider,
     Heading,
     Image,
-    List,
-    ListIcon,
-    ListItem,
     Stack,
     Text,
     useColorModeValue,
@@ -14,20 +11,13 @@ import {
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 
 const options = [
     { id: 1, desc: '1 lorem ipsum' },
     { id: 2, desc: 'Lorem, ipsum dolor.' },
     { id: 3, desc: 'Monthly Updates' },
 ];
-// interface PackageTierProps {
-//     title: string;
-//     options: Array<{ id: number; desc: string }>;
-//     typePlan: string;
-//     checked?: boolean;
-// }
+
 const PackageTier = ({
     image,
     title,
@@ -56,14 +46,7 @@ const PackageTier = ({
             alignItems={{ md: 'center' }}>
             {/* <Heading size={'md'}>{title}</Heading> */}
             <Image width={"150px"} borderRadius={"10px"} src={image} />
-            {/* <List spacing={3} textAlign="start">
-                {options.map((desc, id) => (
-                    <ListItem key={desc.id}>
-                        <ListIcon as={FaCheckCircle} color="green.500" />
-                        {desc.desc}
-                    </ListItem>
-                ))}
-            </List> */}
+
             <Box width={"160px"}>
                 <Heading size={'xm'}>{title}</Heading>
                 {/* <Text size={'xs'}>{desc}</Text> */}
@@ -83,19 +66,18 @@ const PackageTier = ({
 };
 
 const Dashboard = () => {
-    const navigate = useNavigate();
     const userDetail = JSON.parse(localStorage.getItem("KFC-user")) || []
     const [data, setdata] = useState([])
     // console.log(data);
     useEffect(() => {
-        axios.get(`http://localhost:5000/order/${userDetail.user._id}`)
+        axios.get(`https://kfcbackendproject.herokuapp.com/order/${userDetail.user._id}`)
             .then((r) => setdata(r.data))
             .catch((e) => console.log(e))
     }, [])
 
-    data.forEach((e) => {
-        console.log(e.updatedAt);
-    })
+    // data.forEach((e) => {
+    //     console.log(e.updatedAt);
+    // })
 
 
     return (

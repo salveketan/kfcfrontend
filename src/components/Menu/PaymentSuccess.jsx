@@ -13,13 +13,13 @@ const PaymentSuccess = () => {
 
     const navigate = useNavigate();
 
-     axios.get(`http://localhost:5000/cart/${id}`)
+    axios.get(`https://kfcbackendproject.herokuapp.com/cart/${id}`)
         .then(r => { placeOrder(r.data) })
         .catch(e => console.log(e))
 
     const placeOrder = async (r) => {
 
-        axios.post(`http://localhost:5000/order`, r)
+        axios.post(`https://kfcbackendproject.herokuapp.com/order`, r)
             .then((res) => {
                 console.log(res.data, "added to orders succesfully")
             })
@@ -28,7 +28,7 @@ const PaymentSuccess = () => {
             })
         alert("added to orders succesfully")
         //remove all item from cart
-        axios.delete(`http://localhost:5000/cart/deleteall/${id}`)
+        axios.delete(`https://kfcbackendproject.herokuapp.com/cart/deleteall/${id}`)
             .then((r) => console.log(r))
             .catch((e) => console.log({ error: e.message }))
         navigate("/")

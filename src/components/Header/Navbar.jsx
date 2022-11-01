@@ -16,8 +16,6 @@ import {
 import {
     HamburgerIcon,
     CloseIcon,
-    // ChevronDownIcon,
-    // ChevronRightIcon,
 } from '@chakra-ui/icons';
 
 

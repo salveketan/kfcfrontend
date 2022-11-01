@@ -2,7 +2,6 @@ import React from 'react'
 import { Box, Button, Heading, Image, Input, Spacer, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -21,8 +20,7 @@ const Login = () => {
         const { phone, password } = user;
         // console.log(user);
         const data =
-            // await fetch("https://kfcbackendketan.herokuapp.com/signin",
-            await fetch("http://localhost:5000/login",
+            await fetch("https://kfcbackendproject.herokuapp.com/login",
                 {
                     method: "POST",
                     headers: {

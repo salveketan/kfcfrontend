@@ -19,7 +19,7 @@ const Address = () => {
 
     const PostData = async (e) => {
         e.preventDefault();
-        axios.get(`http://localhost:5000/cart/${id}`)
+        axios.get(`https://kfcbackendproject.herokuapp.com/cart/${id}`)
             .then(r => { placeOrder(r.data) })
             .catch(e => console.log(e))
     }
@@ -37,9 +37,9 @@ const Address = () => {
     }
 
     const checkoutHandler = async (amount) => {
-        const { data: { key } } = await axios.get("http://www.localhost:5000/api/getkey")
+        const { data: { key } } = await axios.get("https://kfcbackendproject.herokuapp.com/api/getkey")
 
-        const data = await fetch("http://localhost:5000/api/checkout",
+        const data = await fetch("https://kfcbackendproject.herokuapp.com/api/checkout",
             {
                 method: "POST",
                 headers: {
@@ -59,7 +59,7 @@ const Address = () => {
             description: "KFC payment",
             image: "https://online.kfc.co.in/static/media/kfcLogo.492728c6.svg",
             order_id: res.order.id,
-            callback_url: "http://localhost:5000/api/paymentverification",
+            callback_url: "https://kfcbackendproject.herokuapp.com/api/paymentverification",
             prefill: {
                 name: `${userData.user.name}`,
                 email: `${userData.user.email}`,

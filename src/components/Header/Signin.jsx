@@ -25,9 +25,8 @@ const Signin = () => {
       alert("Phone number is not valid")
     }
     else {
-      const data =
-        // await fetch("https://kfcbackendketan.herokuapp.com/signup", 
-        await fetch("http://localhost:5000/signup",
+      const data = 
+        await fetch("https://kfcbackendproject.herokuapp.com/signup",
           {
             method: "POST",
             headers: {
